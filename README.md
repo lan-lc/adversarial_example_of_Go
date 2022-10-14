@@ -1,0 +1,1 @@
+# adversarial_example_of_Go
