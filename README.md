@@ -1,7 +1,23 @@
 # Adversarial_Example_of_Go
 ------
 ## Overview
+This repository contains a reference implementation of finding adversarial examples for Go Agents.
+
+Given a game, our method can efficiently find an adversarial example of a target agent. The adversarial example is only two stones away from one of the state in the game. It can make the target agent output a extremely wrong action or value. The following picture shows on of the example we found. 
+![Screenshot](game11)
+In this state, KataGo agent, one of the best AZ agents, will want to play black at position B instead of postion A even after executing 50 MCTS simulation. Even amateur human players can tell that position A is the best action since black can kill the white stones that are marked with blue triangle. Moreover, the this state is created by only adding two stones to an AlphaGo Zero self-play record, which are marked as 1 and 2. With the examples we found, we show that AZ agents has not yet generalized enough to be better than amateur human players on all the states.
+
+Our code can conduct attack on four public agents: KataGo, Leela, ELF, and CGI. Our code can easily attack any other Go agents that support GTP (https://senseis.xmp.net/?GoTextProtocol) by adding an additional derived class. Since we connect the agent with local port, each agent can run on its own docker as long as its docker installed (https://github.com/Remi-Coulom/gogui). To our best knowledge, our code is the most light weight program that can interact with the four public agents. 
+
+Our code also extend to other discrete games. For the rules of Go, instead of writing our own, we use gnugo (https://www.gnu.org/software/gnugo/) to judge which action is legal. Therefore, to apply our method to another game, we just need another agent to provide the rules.
+
+To speed up the search, our will also be used to 
+
+
+
 ## Setup
+
+
 ```bash
 git clone git@github.com:lan-lc/adversarial_example_of_Go.git
 cd adversarial_example_of_Go
@@ -11,7 +27,6 @@ cd build
 cmake ..
 make -j
 ```
-## Public Go Programs
 ### KataGo
 ```bash
 # run container
@@ -47,4 +62,5 @@ sudo docker --network="host" --ipc=host -it kds285/cgigo:go_attack
 # run program with gogui-server
 gogui-server -port 9999 "Release/CGI -conf_file cgi_example.cfg"
 ```
+### Gnugo
 
