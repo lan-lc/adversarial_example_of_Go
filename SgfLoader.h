@@ -17,7 +17,10 @@ public:
         this->clear();
 
         std::ifstream fin(sgffile.c_str());
-        if (!fin) { return false; }
+        if (!fin) {
+            std::cout << sgffile << " does not exist." <<endl; 
+            return false; 
+        }
 
         std::string sgf;
         std::string line;

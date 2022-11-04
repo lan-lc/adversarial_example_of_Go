@@ -38,7 +38,7 @@ void display_mcts_eval(MCTSResult mctsResult)
 void run_program_test(Program& program)
 {
     SgfLoader sgfLoader;
-    if (!sgfLoader.parseFromFile("../test.sgf")) {
+    if (!sgfLoader.parseFromFile("./Game_011_adv.sgf")) {
         cerr << "error for parsing sgf file" << endl;
         return;
     }

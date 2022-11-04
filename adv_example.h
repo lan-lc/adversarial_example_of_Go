@@ -440,6 +440,7 @@ public:
             cout << best_q <<' '<< mresult_adv.fValue << endl;
             return diff > m_adv_thr;
         }else{ // policy atttack
+            //
             auto moves_nbest = moves;
             auto nbest = Move(getToPlayColor(), nresult.bestPos); 
             moves_nbest.push_back(nbest);
@@ -447,7 +448,8 @@ public:
             if(!m_examiner.isLegal()) return true; // play an illegal move 
             auto mresult_nbest = m_examiner.get_mcts_result(); m_mcts_cnt++; // ensure nbest is bad
             auto Q = 1.0 - mresult_nbest.fValue;
-            auto diff = best_q - Q;
+            // auto diff = best_q - Q;
+            auto diff = m_ex_s_mresult.fValue - Q;
             cout << "final checking "<< m_step <<" policy (adv_nv, adv_obq, adv_nbq): " << nresult.fValue <<' ';
             cout << best_q << ' ' << Q << ' ' << nbest.toGtpString(true) << ' ' << m_ex_s_mresult.getPosValue(nresult.bestPos) << endl;
             if(diff < (m_adv_thr-m_correct_thr)){
@@ -574,19 +576,19 @@ public:
         if(isDiff(ps_best_V, m_ex_s_best_mresult.fValue)) { 
             cout << "moves are not meaningless " << ps_best_V << ' ';
             cout << m_ex_s_best_mresult.fValue << endl;
-            if(m_adv_step == 1){ // move is not meaningless need to remove from candidates
-                Move a;
-                if(moves[0].getPosition() == PASS_POSITION){
-                    a = moves[1];
-                }else{
-                    a = moves[0];
-                }
-                auto c = a.getColor();
-                auto p = a.getPosition();
-                m_meaningful[c][p] = true;
-                remove_action(a, m_all_meaningless_actions[m_step][c]);
-                cout << "1steps finds action " << a.toGtpString(true) << "is meaningful!!\n";
-            }
+            // if(m_adv_step == 1){ // move is not meaningless need to remove from candidates
+            //     Move a;
+            //     if(moves[0].getPosition() == PASS_POSITION){
+            //         a = moves[1];
+            //     }else{
+            //         a = moves[0];
+            //     }
+            //     auto c = a.getColor();
+            //     auto p = a.getPosition();
+            //     m_meaningful[c][p] = true;
+            //     remove_action(a, m_all_meaningless_actions[m_step][c]);
+            //     cout << "1steps finds action " << a.toGtpString(true) << "is meaningful!!\n";
+            // }
             return false;
         }
 
@@ -596,12 +598,12 @@ public:
         if(!check_adv_with_examiner(moves, nresult ,1.0-ps_best_V)){
             return false;        
         }
-        if(m_adv_step == 2) { // check meaningless
-            cout << "start checking if meamingless " << moves.size() << endl; 
-            if(!check_meaningless(moves[0]) || !check_meaningless(moves[1])){
-                return false;
-            }
-        }
+        // if(m_adv_step == 2) { // check meaningless
+        //     cout << "start checking if meamingless " << moves.size() << endl; 
+        //     if(!check_meaningless(moves[0]) || !check_meaningless(moves[1])){
+        //         return false;
+        //     }
+        // }
         if(!m_attack_robust_nn) {
             save_adv_example(moves, nresult, ex_ps_best_mresult);
             return true;
