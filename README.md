@@ -9,7 +9,7 @@ In our paper, we attack famous Go agents like [KataGo](https://github.com/lightv
 
 In this state, KataGo agent, one of the best AZ agents, will want to play black at position $\color{red} \text{E11 ◆}$ instead of postion $\color{green} \text{E1 ◆}$ even after executing 50 MCTS simulations. Even amateur human players can tell that position $\color{green} \text{E1 ◆}$ is the best action since black can kill the white stones that are marked with blue triangle. We also list the node information of the MCTS first layer at the right of Fig. 2. The first colomn is the action of the node. The second colomn is the number of MCTS simulations of each node. The third colomn is the predicted winrate of each node. According to the list, we can see that KataGo did consider the position $\color{green} \text{E1 ◆}$. However, since the predicted winrate is low, KataGo stop exploring $\color{green} \text{E1 ◆}$ and keep exploiting  $\color{red} \text{E11 ◆}$. Besides making the agent outputs a wrong action, we also finds examples that makes the agent predict a wrong winrate. Fig. 3 4 shows an example of attacking the winrate of Leela with 50 simulations. 
 
-<img src="leela.png" height="400"/>
+<img src="leela_value.png" height="400"/>
 
 Both Fig. 3 and Fig. 4 are white's turn. The only difference is $\color{#9933FF} \text{the black stone marked with 2}$. However, Leela outputs two totally different winrates on two states. Even amateur humans players can tell that one of the winrates is wrong since  the additional $\color{#9933FF} \text{ black stone}$ shouldn't change the winrate.  
 
