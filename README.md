@@ -1,4 +1,4 @@
-# Adversarial_Example_of_Go
+# Adversarial Example of Go
 ------
 ## Overview
 This repository contains a reference implementation of finding adversarial examples for Go Agents.
@@ -13,8 +13,8 @@ Our method is inspired by [adversarial attack](https://arxiv.org/pdf/1412.6572.p
 
 ![Screenshot](panda.png)
 
-In this example, researchers make the target model make a wrong prediction by adding some noise. Similar to the panda example, Fig. 2 is created by a adding <span style="color:lightblue"> two stones (marked as 1 and 3) </span> to a nature state (Fig. 1) of AlphaGo Zero self-play record. Even amateur players know that the <span style="color:lightblue"> two stones </span> are meaningless since they will not affect the winrate nor the best action. 
-However, confused by those two stones, KataGo will switch its answer from <span style="color:green">E1 ◆</span> to <span style="color:red">E11 ◆</span>. More examples are shown in [examples](#adversarial-examples). After carefully design the search space and improve the searching efficiency, our method can find the adversarial examples of KataGo with 50 MCTS simluations of 68% of the self-play record. Moreover, more than 80% of the mistakes can be easily understanded by amateur player. 
+In this example, researchers make the target model make a wrong prediction by adding some noise. Similar to the panda example, Fig. 2 is created by a adding $\color{lightblue} \text{two stones (marked as 1 and 2)}$ to a nature state (Fig. 1) of AlphaGo Zero self-play record. Even amateur players know that the $\color{lightblue} \text{two stones}$ are meaningless since they will not affect the winrate nor the best action of the state in Fig 1. 
+However, confused by those two stones, KataGo will switch its answer from $\color{green} \text{E1 ◆}$ to $\color{red} \text{E11 ◆}$. More examples are shown in [examples](#adversarial-examples). After carefully design the search space and improve the searching efficiency, our method can find the adversarial examples of KataGo with 50 MCTS simluations of 68% of the self-play record. Moreover, more than 80% of the mistakes can be easily understanded by amateur players. 
 
 
 Our codes also aims to be a useful analyze tool for Go players and developers, and supports the following features:
