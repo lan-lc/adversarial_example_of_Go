@@ -1,24 +1,28 @@
 # Adversarial Example of Go
 ------
 ## Overview
-This repository contains a reference implementation of finding adversarial examples for Go Agents.
+This repository contains a reference implementation of finding adversarial examples for Go Agents. Our paper is accepted by Neurips 2022. 
 
 In our paper, we attack famous Go agents like [KataGo](https://github.com/lightvector/KataGo), [LeelaZero](https://github.com/leela-zero/leela-zero), [ELF](https://github.com/pytorch/ELF), and [CGI](https://arxiv.org/abs/2003.06212) by systematically finding states that the agent are wrong but amateur human players are correct. Fig.2 shows one of the examples we found. 
 
-![Screenshot](game11_mcts.png)
+<img src="game11_mcts.png" height="420"/>
 
-In this state, KataGo agent, one of the best AZ agents, will want to play black at position $\color{red} \text{E11 ◆}$ instead of postion $\color{green} \text{E1 ◆}$ even after executing 50 MCTS simulations. Even amateur human players can tell that position $\color{green} \text{E1 ◆}$ is the best action since black can kill the white stones that are marked with blue triangle. We also list the node information of the MCTS first layer at the right of Fig. 2. The first colomn is the action of the node. The second colomn is the number of MCTS simulations of each node. The third colomn is the predicted winrate of each node. According to the list, we can see that KataGo did consider the position $\color{green} \text{E1 ◆}$. However, since the predicted winrate is low, KataGo stop exploring $\color{green} \text{E1 ◆}$ and keep exploiting  $\color{red} \text{E11 ◆}$. 
+In this state, KataGo agent, one of the best AZ agents, will want to play black at position $\color{red} \text{E11 ◆}$ instead of postion $\color{green} \text{E1 ◆}$ even after executing 50 MCTS simulations. Even amateur human players can tell that position $\color{green} \text{E1 ◆}$ is the best action since black can kill the white stones that are marked with blue triangle. We also list the node information of the MCTS first layer at the right of Fig. 2. The first colomn is the action of the node. The second colomn is the number of MCTS simulations of each node. The third colomn is the predicted winrate of each node. According to the list, we can see that KataGo did consider the position $\color{green} \text{E1 ◆}$. However, since the predicted winrate is low, KataGo stop exploring $\color{green} \text{E1 ◆}$ and keep exploiting  $\color{red} \text{E11 ◆}$. Besides making the agent outputs a wrong action, we also finds examples that makes the agent predict a wrong winrate. Fig. 3 4 shows an example of attacking the winrate of Leela with 50 simulations. Both Fig. 3 and Fig. 4 are white's turn. The only different is $\color{#9933FF} \text{the black stone marked with 2}$. However, Leela outputs two totally different winrates on two states. Even amateur humans players can tell that one of the winrates is wrong since  the additional $\color{#9933FF} \text{ black stone}$ shouldn't change the winrate.  
 
-Our method is inspired by [adversarial attack](https://arxiv.org/pdf/1412.6572.pdf), which creates adversarial examples by minimally perturbing a natural example. The following picture is a famous [example](https://arxiv.org/pdf/1412.6572.pdf).
+<img src="leela.png" height="400"/>
+
+
+
+Our method is inspired by [adversarial attack](https://arxiv.org/pdf/1412.6572.pdf), which creates adversarial examples by minimally perturbing a natural example. The following picture is a famous [example](https://arxiv.org/pdf/1412.6572.pdf) of adversarial attack.
 
 ![Screenshot](panda.png)
 
 In this example, researchers make the target model make a wrong prediction by adding some noise. Similar to the panda example, Fig. 2 is created by a adding $\color{#9933FF} \text{two stones (marked as 1 and 2)}$ to a nature state (Fig. 1) of AlphaGo Zero self-play record. Even amateur players know that the $\color{#9933FF} \text{two stones}$ are meaningless since they will not affect the winrate nor the best action of the state in Fig 1. 
-However, confused by those two stones, KataGo will switch its answer from $\color{green} \text{E1 ◆}$ to $\color{red} \text{E11 ◆}$. More examples are shown in [examples](#adversarial-examples). After carefully design the search space and improve the searching efficiency, our method can find the adversarial examples of KataGo with 50 MCTS simluations of 68% of the self-play record. Moreover, more than 80% of the mistakes can be easily understanded by amateur players. 
+However, confused by those two stones, KataGo will switch its answer from $\color{green} \text{E1 ◆}$ to $\color{red} \text{E11 ◆}$. After carefully design the search space and improve the searching efficiency, our method can find the adversarial examples of KataGo with 50 MCTS simluations of 68% of the AlphaGo Zero self-play games. Moreover, more than 80% of the mistakes can be easily understanded by amateur players. 
 
 
 Our codes also aims to be a useful analyze tool for Go players and developers, and supports the following features:
-- Able to attack any Go program that supports GTP (https://senseis.xmp.net/?GoTextProtocol). 
+- Able to conduct our attack on Go program that supports GTP (https://senseis.xmp.net/?GoTextProtocol). 
 - Able to save and load the MCTS and NN results of a program.
 - Allowing different agents to play against each other.
 
