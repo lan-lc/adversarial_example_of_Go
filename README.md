@@ -3,7 +3,7 @@
 ## Overview
 This repository contains a reference implementation of finding adversarial examples for Go Agents. Our paper is accepted by Neurips 2022. 
 
-In our paper, we attack famous Go agents like [KataGo](https://github.com/lightvector/KataGo), [LeelaZero](https://github.com/leela-zero/leela-zero), [ELF](https://github.com/pytorch/ELF), and [CGI](https://arxiv.org/abs/2003.06212) by systematically finding states that the agent are wrong but amateur human players are correct. Fig.2 shows one of the examples we found. 
+In our paper, we attack famous Go agents like [KataGo](https://github.com/lightvector/KataGo), [LeelaZero](https://github.com/leela-zero/leela-zero), [ELF](https://github.com/pytorch/ELF), and [CGI](https://arxiv.org/abs/2003.06212) by systematically finding states that the target agent plays an obvious incorrect move that even amateur human players can tell. Fig.2 shows one of the examples we found. 
 
 ![](game11_mcts.png)
 
