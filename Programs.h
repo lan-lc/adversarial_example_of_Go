@@ -384,7 +384,10 @@ public:
 
     NNResult run_nn_eval()
     {
-        writeToServer("kata-raw-nn 0\n");
+        int r = rand() % 8;
+        string sCmd = "kata-raw-nn " + to_string(r) + "\n";
+        cout << sCmd << endl;
+        writeToServer(sCmd);
         std::string sResult = readFromServerUntil("\n\n");
         std::string sTmp;
         std::istringstream in(sResult);

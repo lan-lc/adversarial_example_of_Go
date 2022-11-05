@@ -12,6 +12,9 @@ void display_nn_eval(NNResult nnResult)
     cout << "==================" << endl;
     cout << "NN evaluation" << endl;
     cout << "value: " << nnResult.fValue << endl;
+    nnResult.updateBestPos();
+    auto m = Move(COLOR_BLACK, nnResult.bestPos);
+    cout << "best move: " <<  m.toGtpString() <<' '<< nnResult.get_bestPos_prob() <<endl;
     cout << "policy: ";
     for (auto& p : nnResult.vPolicy) { cout << p << " "; }
     cout << endl;
@@ -38,7 +41,8 @@ void display_mcts_eval(MCTSResult mctsResult)
 void run_program_test(Program& program)
 {
     SgfLoader sgfLoader;
-    if (!sgfLoader.parseFromFile("./Game_011_adv.sgf")) {
+    // if (!sgfLoader.parseFromFile("./Game_011_adv.sgf")) {
+    if (!sgfLoader.parseFromFile("./fox.sgf")) {
         cerr << "error for parsing sgf file" << endl;
         return;
     }
@@ -50,17 +54,19 @@ void run_program_test(Program& program)
         program.play(m);
     }
     if (!program.update()) {
-        cerr << "error for play move" << endl;
+        cerr << "error during play move" << endl;
         return;
     }
 
-    // test nn eval
-    display_nn_eval(program.get_nn_result()); // results from program
-    display_nn_eval(program.get_nn_result()); // results from lookup table
+    
 
     // test mcts eval
     display_mcts_eval(program.get_mcts_result()); // results from program
-    display_mcts_eval(program.get_mcts_result()); // results from lookup table
+    // display_mcts_eval(program.get_mcts_result()); // results from lookup table
+
+    // test nn eval
+    display_nn_eval(program.get_nn_result()); // results from program
+    // display_nn_eval(program.get_nn_result()); // results from lookup table
 }
 
 void run_illegal_move_test(Gnugo& gnugo)
@@ -203,6 +209,7 @@ void run_adv_attack(bool isPolicy, float adv_thr, string name, bool use_territor
 
 int main(int argc, char* argv[])
 {
+    srand (time(NULL));
     gnugo = nullptr;
     if (string(argv[1]) == "test_program") { // ./GO_attack test_program katago
         if (argc != 3){

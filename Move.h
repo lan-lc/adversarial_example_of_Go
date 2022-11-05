@@ -67,10 +67,15 @@ public:
             m_position = y * BOARD_SIZE + x;
         } else {
             // SGF string
-            int x = toupper(s[0]) - 'A';
-            int y = toupper(s[1]) - 'A';
-            m_position = y * BOARD_SIZE + x;
+            if(s == "tt" or s=="PASS"){
+                m_position = PASS_POSITION;
+            }else{
+                int x = toupper(s[0]) - 'A';
+                int y = toupper(s[1]) - 'A';
+                m_position = y * BOARD_SIZE + x;
+            }
         }
+            
     }
     ~Move() {}
 
