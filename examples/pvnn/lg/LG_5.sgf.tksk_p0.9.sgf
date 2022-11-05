@@ -1,0 +1,16 @@
+(;FF[4]CA[UTF-8]SZ[19];B[qd];W[dc];B[de];W[pp];B[cc];W[cp];B[ep];W[eq];B[fq];W[dq];B[oc];W[cb];B[cd];W[gc];B[bb];W[jc];B[nq];W[qn];B[pr];W[fp];B[qq];W[qk];B[cj];W[gq];B[qi];W[qp];B[pm];W[qm];B[kc];W[kd];B[lc];W[jd];B[cm];W[db];B[kq];W[dg];B[gd];W[hc];B[fg];W[di];B[bh];W[cf];B[fe];W[dl];B[fi];W[bi];B[ci];W[ch];B[bj];W[bg];B[ai];W[dj];B[fc];W[fb];B[fk];W[ef];B[ee];W[ff];B[gf];W[gg];B[hf];W[fh];B[gh];W[eg];B[hg];W[gi];B[fg];W[eh];B[hi];W[gj];B[fj];W[hj];B[ij];W[ii];B[hh];W[gl];B[fl];W[ck];B[bk];W[hl];B[dm];W[em];B[fm];W[en];B[fn];W[be];B[cl];W[ji];B[dk];W[bd];B[kg];W[jk];B[lh];W[rd];B[qc];W[qg];B[oi];W[qe];B[rf];W[rg];B[qf];W[pf];B[re];W[ri];B[pe];W[pq];B[rr];W[rq];B[qr];W[qj];B[lj];W[ki];B[li];W[hn];B[iq];W[ld];B[hd];W[ec];B[km];W[jm];B[jn];W[kl];B[lm];W[in];B[im];W[jl];B[fr];W[jg];B[jf];W[kf];B[jh];W[kh];B[ig];W[lg];B[lf];W[jg];B[gk];W[hk];B[kg];W[mc];B[mg];W[nb];B[gr];W[gp];B[er];W[dr];B[eo];W[bn];B[jo];W[oq];B[or];W[np];B[mp];W[no];B[ho];W[io];B[ip];W[gn];B[go];W[mq];B[nr];W[lp];B[mo];W[mn];B[lo];W[mm];B[ko];W[ol];B[ds];W[cs];B[es];W[br];B[fo];W[bc];B[nl];W[nm];B[md];W[pg];B[ob];W[mb];B[na];W[sg];B[sf];W[rp];B[cn];W[bm];B[co];W[bo];B[dp];W[bp];B[qh];W[rh];B[oh];W[nj];B[oj];W[ok];B[ml];W[nk];B[id];W[kb];B[ic];W[hq];B[tt]C[policy adv example of 0.9 at step: 201
+adv actions: W H3 B PASS 
+MCTS V 0.993067 ADV MCTS V 0.978651 ADV NN V 0.974504
+example actions territory and diff: 
+W H3 0.997712 0.00414699
+B PASS 0 0
+toPlay cand max avg std: -1 -nan -nan
+nextPlay cand max avg std: -1 -nan -nan
+nn best move P Q N: H2 0.528723 0.051502 1
+after playing nn best move, value give by teacher net: 0.051502
+after playing nn best move, value give by teacher mcts: 0.021162
+mcts best move P Q N: J18 0.439065 0.996541 391
+original mcts best move P Q N: J18 0.439065 0.996541 391
+teacher nn mcts cnt: 3315 34
+student nn mcts cnt: 3315 34
+])

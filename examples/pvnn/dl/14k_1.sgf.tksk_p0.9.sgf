@@ -1,0 +1,16 @@
+(;FF[4]CA[UTF-8]SZ[19];B[pd];W[dp];B[cd];W[pp];B[fq];W[dn];B[jp];W[ed];B[hd];W[ef];B[cg];W[kd];B[hf];W[eh];B[hh];W[cc];B[bc];W[dc];B[be];W[nc];B[oc];W[nd];B[pf];W[qh];B[nq];W[pn];B[ph];W[pi];B[oh];W[qg];B[qf];W[qj];B[oi];W[oj];B[nj];W[ok];B[jc];W[kc];B[jd];W[gc];B[ke];W[le];B[lf];W[me];B[mf];W[nf];B[ng];W[kf];B[je];W[mg];B[lg];W[mh];B[lh];W[mi];B[of];W[ne];B[li];W[mj];B[nk];W[nl];B[mk];W[lj];B[ml];W[nm];B[mm];W[mn];B[ln];W[mo];B[lp];W[hj];B[gi];W[gj];B[fi];W[kj];B[ji];W[jj];B[ii];W[ki];B[kg];W[km];B[lm];W[kl];B[jn];W[kn];B[lo];W[jo];B[io];W[ko];B[kp];W[fp];B[gp];W[fo];B[eq];W[dq];B[fe];W[ci];B[fj];W[fk];B[ek];W[fl];B[ck];W[el];B[cb];W[dk];B[dj];W[ej];B[ei];W[cj];B[kb];W[lb];B[jb];W[ob];B[pb];W[od];B[pc];W[db];B[mb];W[bb];B[di];W[ch];B[dh];W[bk];B[ee];W[ac];B[bd];W[hp];B[hq];W[go];B[ip];W[gq];B[gr];W[or];B[nr];W[oq];B[im];W[hl];B[il];W[ik];B[bh];W[bi];B[ai];W[cl];B[bg];W[fd];B[os];W[ps];B[ns];W[pr];B[dr];W[cr];B[er];W[de];B[ff];W[dd];B[df];W[cf];B[eg];W[ce];B[bf];W[jg];B[jf];W[kh];B[kf];W[nh];B[og];W[mc];B[la];W[bs];B[ep];W[eo];B[jh];W[rf];B[re];W[rg];B[sf];W[sg];B[se];W[mp];B[mq];W[hn];B[in];W[np];B[hm];W[gm];B[ho];W[gp];B[hb];W[ds];B[hr];W[gb];B[gn];W[es];B[fr];W[fn];B[hc];W[ad];B[ae];W[ab];B[aj];W[ni];B[fs];W[cs];B[bj];W[ck];B[ak];W[al];B[ah];W[gd];B[ge];W[ha];B[ia];W[ga];B[ij];W[hi];B[ih];W[jl];B[lk];W[ek];B[kk];W[jk];B[hn];W[nb];B[lc];W[ll];B[jm];W[ja];B[tt]C[policy adv example of 0.9 at step: 225
+adv actions: W K19 B PASS 
+MCTS V 0.993223 ADV MCTS V 0.960844 ADV NN V 0.999339
+example actions territory and diff: 
+W K19 0.997407 0.038495
+B PASS 3.57331e-43 0
+toPlay cand max avg std: -1 -nan -nan
+nextPlay cand max avg std: -1 -nan -nan
+nn best move P Q N: J18 0.000526 0.00673233 1
+after playing nn best move, value give by teacher net: 0.00673199
+after playing nn best move, value give by teacher mcts: 0.00371498
+mcts best move P Q N: H9 0.000324 0.996509 389
+original mcts best move P Q N: H9 0.000324 0.996509 389
+teacher nn mcts cnt: 4144 47
+student nn mcts cnt: 4144 47
+])

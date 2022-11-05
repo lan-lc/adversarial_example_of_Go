@@ -1,0 +1,16 @@
+(;FF[4]CA[UTF-8]SZ[19];B[dp];W[pd];B[pp];W[dd];B[cc];W[cd];B[dc];W[ed];B[fb];W[cn];B[qf];W[qq];B[qp];W[pq];B[op];W[nr];B[ci];W[ck];B[ei];W[fq];B[fp];W[gp];B[co];W[dn];B[fo];W[cq];B[dq];W[bo];B[cp];W[bp];B[bq];W[go];B[fn];W[gn];B[fm];W[bj];B[gq];W[cr];B[hq];W[br];B[io];W[pj];B[rq];W[rr];B[or];W[oq];B[nq];W[pr];B[mr];W[np];B[mq];W[no];B[pl];W[jo];B[jn];W[ko];B[ip];W[os];B[kq];W[pm];B[qm];W[qn];B[pn];W[om];B[rn];W[ql];B[rm];W[qk];B[on];W[nm];B[nn];W[mm];B[mn];W[lm];B[nj];W[ok];B[qc];W[qd];B[pc];W[od];B[rd];W[re];B[rc];W[qe];B[nb];W[mg];B[md];W[fc];B[gb];W[nf];B[bd];W[be];B[bc];W[cf];B[hd];W[jm];B[kg];W[le];B[ki];W[jh];B[kh];W[mi];B[gh];W[ld];B[nd];W[ne];B[jk];W[ie];B[he];W[if];B[bg];W[dh];B[di];W[gg];B[hh];W[hf];B[fe];W[ff];B[in];W[jl];B[kn];W[ii];B[ij];W[hj];B[jg];W[ih];B[ig];W[ik];B[jj];W[fh];B[fi];W[gi];B[eh];W[hg];B[fg];W[hi];B[fh];W[hl];B[id];W[je];B[ef];W[bi];B[me];W[lf];B[mf];W[lg];B[bh];W[jd];B[ng];W[pf];B[nh];W[kb];B[lb];W[ni];B[gf];W[rl];B[rf];W[oc];B[ob];W[sf];B[nc];W[qg];B[dr];W[lc];B[bs];W[ib];B[bm];W[eb];B[ec];W[bn];B[cs];W[ar];B[dl];W[cl];B[rp];W[ms];B[ls];W[ns];B[dm];W[cm];B[km];W[kl];B[sr];W[rs];B[lr];W[ln];B[lo];W[hb];B[gc];W[hm];B[gk];W[hk];B[la];W[fk];B[fl];W[fj];B[im];W[il];B[en];W[dk];B[ek];W[ej];B[el];W[lp];B[mo];W[ka];B[mc];W[do];B[gl];W[ss];B[sq];W[pb];B[qb];W[hc];B[gd];W[sl];B[sm];W[ma];B[mb];W[oa];B[pa];W[ch];B[cg];W[ro];B[si];W[sj]C[policy adv example of 0.7 at step: 224
+adv actions: B T11 W T10 
+MCTS V 0.96274 ADV MCTS V 0.927757 ADV NN V 0.481038
+example actions territory and diff: 
+B T11 -0.996316 0.320582
+W T10 -0.996616 0.212229
+toPlay cand max avg std: 0.416576 0.143669 0.108134
+nextPlay cand max avg std: 0.372099 0.193915 0.077858
+nn best move P Q N: S13 0.206897 0.201313 13
+after playing nn best move, value give by teacher net: 0.384492
+after playing nn best move, value give by teacher mcts: 0.0756733
+mcts best move P Q N: R5 0.206897 0.954299 768
+original mcts best move P Q N: R5 0.206897 0.954299 768
+teacher nn mcts cnt: 53649 1665
+student nn mcts cnt: 46869 44353
+])

@@ -1,0 +1,36 @@
+(;FF[4]CA[UTF-8]AP[GoGui:1.5.1]
+;B[pd];W[pp];B[cd];W[dp];B[ic];W[qf];B[nd];W[qc];B[qd];W[rd]
+;B[nq];W[qn];B[cn];W[fq];B[pc];W[rb];B[qb];W[rc];B[jp];W[ec]
+;B[dc];W[de];B[dd];W[id];B[jd];W[je];B[jc];W[ie];B[ee];W[le]
+;B[lc];W[co];B[dn];W[cj];B[fo];W[cg];B[gq];W[gr];B[cq];W[dq]
+;B[bo];W[cp];B[hq];W[fp];B[bp];W[bq];B[go];W[bm];B[bn];W[cl]
+;B[di];W[ci];B[hr];W[gd];B[er];W[br];B[fr];W[dr];B[qq];W[pq]
+;B[pr];W[qp];B[rr];W[rq];B[qr];W[oq];B[np];W[or];B[rp];W[ro]
+;B[sq];W[pk];B[qi];W[fm];B[dl];W[ek];B[cm];W[bl];B[el];W[fl]
+;B[dk];W[dj];B[fk];W[ej];B[gk];W[hm];B[il];W[hl];B[hk];W[im]
+;B[jm];W[jn];B[jl];W[ho];B[eo];W[kn];B[gp];W[ll];B[jj];W[mo]
+;B[no];W[nn];B[on];W[om];B[qg];W[pg];B[pf];W[rg];B[qh];W[qe]
+;B[pe];W[lj];B[qk];W[ql];B[pj];W[rk];B[ok];W[qj];B[pl];W[qk]
+;B[nm];W[mn];B[po];W[nl];B[qo];W[lq];B[rn];W[gi];B[hh];W[hi]
+;B[ii];W[ih];B[jh];W[ig];B[jg];W[hg];B[lh];W[oj];B[nh];W[ed]
+;B[df];W[db];B[cf];W[cb];B[bg];W[bh];B[dg];W[ch];B[fe];W[fg]
+;B[bc];W[hc];B[bb];W[nr];B[pm];W[ol];B[nk];W[ml];B[oo];W[mq]
+;B[nj];W[pi];B[ph];W[ri];B[rf];W[rm];B[so];W[re];B[rh];W[si]
+;B[kr];W[lr];B[oi];W[hb];B[pb];W[sf];B[sh];W[sm];B[kq];W[pj]
+;B[li];W[mj];B[ke];W[kf];B[kd];W[jf];B[lf];W[mi];B[kg];W[ni]
+;B[oh];W[ja];B[kb];W[bf];B[be];W[ag];B[gf];W[gg];B[hj];W[ba]
+;B[ef];W[ck];B[em];W[dh];B[ra];W[sg];B[hf];W[ib];B[jb];W[ks]
+;B[js];W[ls];B[kp];W[ko];B[lp];W[mp];B[io];W[in];B[hp];W[kj]
+;B[ki];W[kk];B[jk];W[fn];B[en];W[mh];B[];W[pn]
+C[value adv example of 0.7 at step: 226
+adv actions: B PASS W Q6 
+MCTS V 0.00333052 ADV MCTS V 0.00304648 ADV NN V 0.754068
+example actions territory and diff: 
+B PASS 4.58575e-41 3.92364e-44
+W Q6 0.936026 0.751022
+toPlay cand max avg std: -1 -nan -nan
+nextPlay cand max avg std: -1 -nan -nan
+teacher nn mcts cnt: 9066 161
+student nn mcts cnt: 8962 0
+]
+LB[pn:2])

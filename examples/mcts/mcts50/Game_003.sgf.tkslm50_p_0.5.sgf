@@ -1,0 +1,16 @@
+(;FF[4]CA[UTF-8]SZ[19];B[dp];W[pp];B[cd];W[pd];B[ed];W[cq];B[dq];W[cp];B[cn];W[co];B[do];W[bn];B[cr];W[cm];B[dn];W[bl];B[bq];W[bp];B[ap];W[bo];B[qq];W[pq];B[qp];W[qo];B[ro];W[rn];B[qn];W[po];B[rm];W[rp];B[sn];W[rq];B[qf];W[nc];B[pn];W[rd];B[of];W[nj];B[md];W[nd];B[me];W[lb];B[di];W[dm];B[li];W[pj];B[oi];W[oj];B[mh];W[rk];B[kc];W[lc];B[mk];W[qh];B[kd];W[fm];B[re];W[nh];B[oo];W[qr];B[rc];W[qd];B[sd];W[ld];B[le];W[ke];B[kb];W[nf];B[mg];W[ng];B[ne];W[oe];B[pg];W[ni];B[qb];W[kf];B[lg];W[ob];B[rg];W[hd];B[ic];W[qc];B[rb];W[pb];B[la];W[mb];B[ie];W[rh];B[sg];W[gf];B[ef];W[fd];B[fc];W[gc];B[fe];W[id];B[jd];W[je];B[if];W[jg];B[hc];W[gd];B[gb];W[ge];B[kg];W[jf];B[jh];W[ig];B[ih];W[hg];B[eb];W[hh];B[qk];W[qj];B[hq];W[eg];B[eh];W[ff];B[df];W[ij];B[jk];W[fg];B[dg];W[jq];B[jo];W[nl];B[mm];W[ml];B[ll];W[lm];B[mn];W[km];B[kl];W[jm];B[nk];W[ol];B[ok];W[mj];B[lk];W[pk];B[pl];W[lj];B[kj];W[jl];B[kk];W[ql];B[pm];W[gr];B[hr];W[gq];B[gp];W[fp];B[fo];W[pa];B[tt];W[om]C[policy adv example of 0.5 at step: 154
+adv actions: B PASS W P7 
+MCTS V 0.907757 ADV MCTS V 0.889411 ADV NN V 0.543902
+example actions territory and diff: 
+B PASS 0 nan
+W P7 0.966412 0.345509
+toPlay cand max avg std: -1 -nan -nan
+nextPlay cand max avg std: -1 -nan -nan
+nn best move P Q N: P6 0.54 0 0
+after playing nn best move, value give by teacher net: 0.310807
+after playing nn best move, value give by teacher mcts: 0.023801
+mcts best move P Q N: R19 0 0.901907 755
+original mcts best move P Q N: R19 0 0.901907 755
+teacher nn mcts cnt: 919 119
+student nn mcts cnt: 449 449
+])

@@ -1,0 +1,11 @@
+(;FF[4]CA[UTF-8]SZ[19];B[dp];W[pd];B[pq];W[dd];B[qn];W[fq];B[hq];W[fo];B[eq];W[er];B[fp];W[gp];B[ep];W[gq];B[dr];W[hp];B[iq];W[ip];B[jq];W[mq];B[lq];W[mp];B[lp];W[mo];B[lo];W[qp];B[pp];W[qo];B[po];W[rn];B[rm];W[qm];B[pn];W[rl];B[ro];W[sm];B[rp];W[mn];B[ln];W[mm];B[ol];W[lm];B[km];W[kl];B[jl];W[kk];B[jn];W[im];B[jm];W[qq];B[qr];W[pm];B[om];W[on];B[mk];W[nk];B[nl];W[mj];B[ok];W[nj];B[ml];W[ll];B[oj];W[qj];B[lj];W[nh];B[lk];W[kj];B[li];W[mh];B[qk];W[ql];B[rk];W[pk];B[pj];W[rj];B[pl];W[sk];B[pk];W[qh];B[ph];W[qg];B[pg];W[hk];B[il];W[hl];B[in];W[gn];B[hm];W[gm];B[hn];W[di];B[qf];W[pf];B[of];W[pe];B[ng];W[lg];B[ki];W[ij];B[ji];W[jj];B[lf];W[kg];B[mg];W[lh];B[oh];W[kf];B[le];W[ke];B[kd];W[jd];B[jc];W[id];B[lc];W[ic];B[jb];W[ec];B[gc];W[ge];B[fd];W[ib];B[fe];W[gg];B[fg];W[df];B[dg];W[ef];B[ff];W[hh];B[eg];W[cf];B[cg];W[cj];B[gf];W[hf];B[he];W[hd];B[gd];W[if];B[ei];W[ej];B[fi];W[fj];B[gi];W[ii];B[gh];W[bh];B[bg];W[bf];B[cc];W[cd];B[af];W[bd];B[dc];W[eb];B[bc];W[ae];B[ag];W[ed];B[db];W[gb];B[fb];W[fa];B[hb];W[fc];B[ia];W[hc];B[ha];W[dn];B[ac];W[ba];B[ja];W[ga];B[da];W[ea];B[ee];W[ka];B[kc]C[value adv example of 0.9 at step: 177
+adv actions: W L19 B L17 
+MCTS V 0.995528 ADV MCTS V 0.957014 ADV NN V 0.047877
+example actions territory and diff: 
+W L19 0.80845 0
+B L17 0.892417 0.654086
+toPlay cand max avg std: 0.311017 0.0383397 0.0904441
+nextPlay cand max avg std: 0.815823 0.348305 0.250875
+teacher nn mcts cnt: 176141 920
+student nn mcts cnt: 176141 920
+])

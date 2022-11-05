@@ -1,0 +1,11 @@
+(;FF[4]CA[UTF-8]SZ[19];B[dp];W[pd];B[pq];W[dd];B[qn];W[jc];B[jp];W[cq];B[cp];W[dq];B[eq];W[er];B[fq];W[fr];B[gq];W[bp];B[bo];W[bq];B[cn];W[cf];B[gr];W[qd];B[pg];W[qg];B[qh];W[rg];B[rh];W[ph];B[pi];W[oh];B[oi];W[mq];B[nq];W[jq];B[sg];W[rf];B[nh];W[og];B[ng];W[of];B[nf];W[kp];B[ip];W[iq];B[hq];W[lp];B[oe];W[pf];B[nd];W[ni];B[qj];W[mi];B[lc];W[me];B[ne];W[md];B[mc];W[oc];B[lf];W[mf];B[nc];W[mg];B[mh];W[lg];B[lh];W[kf];B[kg];W[le];B[kd];W[je];B[jd];W[id];B[ke];W[jf];B[jg];W[kh];B[li];W[ji];B[ig];W[jj];B[ld];W[lf];B[ie];W[ra];B[tt]C[value adv example of 0.9 at step: 83
+adv actions: W S19 B PASS 
+MCTS V 0.00107274 ADV MCTS V 0.00141627 ADV NN V 0.915491
+example actions territory and diff: 
+W S19 -0.820298 0.914075
+B PASS 0 0
+toPlay cand max avg std: -1 -nan -nan
+nextPlay cand max avg std: -1 -nan -nan
+teacher nn mcts cnt: 8 2
+student nn mcts cnt: 8 2
+])
