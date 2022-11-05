@@ -11,7 +11,7 @@ In this state, KataGo agent, one of the best AZ agents, will want to play black 
 
 <img src="./images/f34.png" height="400"/>
 
-Both Fig. 3 and Fig. 4 are white's turn. The only difference is the black stone marked with $\color{#9933FF} \text{2}$. However, Leela outputs two totally different winrates on two states. Even amateur humans players can tell that one of the winrates is wrong since  the additional $\color{#9933FF} \text{ black stone}$ shouldn't change the winrate.  
+Both Fig. 3 and Fig. 4 are white's turn. The only difference is the black stone marked with $\color{#9933FF} \text{2}$. However, Leela outputs two totally different winrates on two states. Even amateur humans players can tell that one of the winrates is wrong since  the additional $\color{#9933FF} \text{ black stone}$ shouldn't change the winrate.  More examples are shown in [Adversarial Examples](#adversarial-examples)
 
 Our method is inspired by [adversarial attack](https://arxiv.org/pdf/1412.6572.pdf), which creates adversarial examples by minimally perturbing a natural example. For example, in the domain of image classification, researchers make the target model make a wrong prediction by adding some human imperceptible noise. Similar to other adversarial attack, Fig. 2 is created by a adding $\color{#9933FF} \text{two stones (marked as 1 and 2)}$ to a nature state (Fig. 1) of AlphaGo Zero self-play record. Even amateur players know that the $\color{#9933FF} \text{two stones}$ are meaningless since they will not affect the winrate nor the best action of the state in Fig 1. 
 However, confused by those two stones, KataGo will switch its answer from $\color{green} \text{E1 ◆}$ to $\color{red} \text{E11 ◆}$. 
@@ -79,13 +79,13 @@ sudo docker --network="host" --ipc=host -it kds285/cgigo:go_attack
 gogui-server -port 9999 "Release/CGI -conf_file cgi_example.cfg"
 ```
 
-## Adversarial examples
-The following pictures show some of the adversarial examples we found. For each pair of pictures, the left is the nature state and the right is the perturbed stated. 
+## Adversarial Examples
+The following pictures show some of the adversarial examples we found. For each pair of pictures, the left is the nature state and the right is the perturbed stated. Even more examples are shown in the [examples](https://github.com/lan-lc/adversarial_example_of_Go/tree/main/examples) folder.
 
 
 <img src="./images/f56.png" height="400"/>
 <img src="./images/f78.png" height="400"/>
-<img src="./images/f910.png" height="400"/>
+<img src="./images/f710.png" height="400"/>
 <img src="./images/f1112.png" height="400"/>
 <img src="./images/f1314.png" height="400"/>
 <img src="./images/f1516.png" height="400"/>
