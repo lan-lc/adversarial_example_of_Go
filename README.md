@@ -17,7 +17,9 @@ Our method is inspired by [adversarial attack](https://arxiv.org/pdf/1412.6572.p
 However, confused by those two stones, KataGo will switch its answer from $\color{green} \text{E1 ◆}$ to $\color{red} \text{E11 ◆}$. 
 To find the examples show in Fig. 2 and Fig.4, we carefully designed the constraints on perturbed states during the search so that they are semantically similar to the original states and are also easy enough for human players to verify the correct move. Next, we test AZ agents with thousands of these perturbed
 states to they make a trivial mistake. We also design an efficient algorithm to make the testing faster. Normally, our method is 100 times faster than brute force search. The following table shows the results of attacking KataGo with AlphaGo Zero self-play games.
+
 ![](./images/table.png)
+
 The first column shows the number of MCTS simulations used by KataGo. The second and the third columns show the success rate of making KataGo outputs a bad action. The third and forth columns shows the success rate of make KataGo outputs a wrong winrate. We can see that as the number of simulations increase, KataGo becomes harder to attack. However, even with 50 simluations, we can still finds policy adversarial examples on 68% of the AlphaGo Zero self-play games. 
 
  
