@@ -5,11 +5,11 @@ This repository contains a reference implementation of finding adversarial examp
 
 In our paper, we attack famous Go agents like [KataGo](https://github.com/lightvector/KataGo), [LeelaZero](https://github.com/leela-zero/leela-zero), [ELF](https://github.com/pytorch/ELF), and [CGI](https://arxiv.org/abs/2003.06212) by systematically finding states that the target agent plays an obvious incorrect move that even amateur human players can tell. Fig.2 shows one of the examples we found. 
 
-![](game11_mcts.png)
+<img src="./images/f12.png" height="410"/>
 
 In this state, KataGo agent, one of the best AZ agents, will want to play black at position $\color{red} \text{E11 ◆}$ instead of postion $\color{green} \text{E1 ◆}$ even after executing 50 MCTS simulations. Even amateur human players can tell that position $\color{green} \text{E1 ◆}$ is the best action since black can kill the white stones that are marked with blue triangle. We also list the node information of the MCTS first layer at the right of Fig. 2. The first colomn is the action of the node. The second colomn is the number of MCTS simulations of each node. The third colomn is the predicted winrate of each node. According to the list, we can see that KataGo did consider the position $\color{green} \text{E1 ◆}$. However, since the predicted winrate is low, KataGo stop exploring $\color{green} \text{E1 ◆}$ and keep exploiting  $\color{red} \text{E11 ◆}$. Besides making the agent outputs a wrong action, we also finds examples that makes the agent predict a wrong winrate. Fig. 3 4 show an example of attacking the winrate of Leela with 50 simulations. 
 
-<img src="leela_value.png" height="390"/>
+<img src="./images/f34.png" height="400"/>
 
 Both Fig. 3 and Fig. 4 are white's turn. The only difference is the black stone marked with $\color{#9933FF} \text{2}$. However, Leela outputs two totally different winrates on two states. Even amateur humans players can tell that one of the winrates is wrong since  the additional $\color{#9933FF} \text{ black stone}$ shouldn't change the winrate.  
 
@@ -17,7 +17,7 @@ Our method is inspired by [adversarial attack](https://arxiv.org/pdf/1412.6572.p
 However, confused by those two stones, KataGo will switch its answer from $\color{green} \text{E1 ◆}$ to $\color{red} \text{E11 ◆}$. 
 To find the examples show in Fig. 2 and Fig.4, we carefully designed the constraints on perturbed states during the search so that they are semantically similar to the original states and are also easy enough for human players to verify the correct move. Next, we test AZ agents with thousands of these perturbed
 states to they make a trivial mistake. We also design an efficient algorithm to make the testing faster. Normally, our method is 100 times faster than brute force search. The following table shows the results of attacking KataGo with AlphaGo Zero self-play games.
-![](table.png)
+![](./images/table.png)
 The first column shows the number of MCTS simulations used by KataGo. The second and the third columns show the success rate of making KataGo outputs a bad action. The third and forth columns shows the success rate of make KataGo outputs a wrong winrate. We can see that as the number of simulations increase, KataGo becomes harder to attack. However, even with 50 simluations, we can still finds policy adversarial examples on 68% of the AlphaGo Zero self-play games. 
 
  
@@ -76,3 +76,14 @@ sudo docker --network="host" --ipc=host -it kds285/cgigo:go_attack
 # run program with gogui-server
 gogui-server -port 9999 "Release/CGI -conf_file cgi_example.cfg"
 ```
+
+## Adversarial examples
+The following pictures show some of the adversarial examples we found. For each pair of pictures, the left is the nature state and the right is the perturbed stated. 
+
+
+<img src="./images/f56.png" height="400"/>
+<img src="./images/f78.png" height="400"/>
+<img src="./images/f910.png" height="400"/>
+<img src="./images/f1112.png" height="400"/>
+<img src="./images/f1314.png" height="400"/>
+<img src="./images/f1516.png" height="400"/>
