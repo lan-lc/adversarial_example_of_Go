@@ -3,7 +3,9 @@
 ## Overview
 This repository contains a reference implementation of finding adversarial examples for Go Agents. Our paper is accepted by Neurips 2022. 
 
-In our paper, we attack famous Go agents like [KataGo](https://github.com/lightvector/KataGo), [LeelaZero](https://github.com/leela-zero/leela-zero), [ELF](https://github.com/pytorch/ELF), and [CGI](https://arxiv.org/abs/2003.06212) by systematically finding adversarial states such that the target Go agent will make trivial mistakes. Given a natural state from a game record where the target Go agent can find a winning move, we generate an adversarial state by adding one or two meaningless stones such that the Go agent will play an undoubtedly inferior action and eventually lose the game. The errors made by the target actions are obvious even for Go beginners. Fig.2 shows one of the examples we found. 
+Can well-trained Go agents make trivial mistakes that even humans can easily tell? In our paper, we attack famous Go agents like [KataGo](https://github.com/lightvector/KataGo), [LeelaZero](https://github.com/leela-zero/leela-zero), [ELF](https://github.com/pytorch/ELF), and [CGI](https://arxiv.org/abs/2003.06212) by systematically finding adversarial states such that the target Go agent will make trivial mistakes. This is inspired by the literature of [adversarial attack](https://arxiv.org/pdf/1412.6572.pdf), where ressearchers found neural networks can be easily fooled by adding some human imperceptible perturbation to the input. 
+
+Given a natural state from a game record where the target Go agent can find a winning move, we generate an adversarial state by adding one or two meaningless stones such that the Go agent will play an undoubtedly inferior action and eventually lose the game. The errors made by the target actions are obvious even for Go beginners. Fig.2 shows one of the examples we found. 
 
 <!-- <img src="./images/f12.png" height="410"/> -->
 ![](./images/f12.png)
