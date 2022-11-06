@@ -1,36 +1,35 @@
 # Adversarial Example of Go
 ------
 ## Overview
-This repository contains a reference implementation of finding adversarial examples for Go Agents. Our paper is accepted by Neurips 2022. 
+This repository contains a reference implementation of finding adversarial examples for Go Agents. Our paper has been accepted by Neurips 2022. 
 
 In our paper, we attack famous Go agents like [KataGo](https://github.com/lightvector/KataGo), [LeelaZero](https://github.com/leela-zero/leela-zero), [ELF](https://github.com/pytorch/ELF), and [CGI](https://arxiv.org/abs/2003.06212) by systematically finding states that the target agent plays an obvious incorrect move that even amateur human players can tell. Fig.2 shows one of the examples we found. 
 
 <!-- <img src="./images/f12.png" height="410"/> -->
 ![](./images/f12.png)
 
-In this state, KataGo agent, one of the best AZ agents, will want to play black at position $\color{red} \text{E11 ◆}$ instead of postion $\color{green} \text{E1 ◆}$ even after executing 50 MCTS simulations. Even amateur human players can tell that position $\color{green} \text{E1 ◆}$ is the best action since black can kill the white stones that are marked with blue triangle. We also list the node information of the MCTS first layer at the right of Fig. 2. The first colomn is the action of the node. The second colomn is the number of MCTS simulations of each node. The third colomn is the predicted winrate of each node. According to the list, we can see that KataGo did consider the position $\color{green} \text{E1 ◆}$. However, since the predicted winrate is low, KataGo stop exploring $\color{green} \text{E1 ◆}$ and keep exploiting  $\color{red} \text{E11 ◆}$. Besides making the agent outputs a wrong action, we also finds examples that makes the agent predict a wrong winrate. Fig. 3 4 show an example of attacking the winrate of Leela with 50 simulations. 
+In this state, the KataGo agent, one of the best AZ agents, will want to play black at position $\color{red} \text{E11 ◆}$ instead of position $\color{green} \text{E1 ◆}$ even after executing 50 MCTS simulations. Even amateur human players can tell that position $\color{green} \text{E1 ◆}$ is the best action since black can kill the white stones that are marked with blue triangles. We also list the node information of the MCTS first layer at the right of Fig. 2. The first column is the node's action. The second column is the number of MCTS simulations of each node. The third column is the predicted winrate of each node. According to the list, we can see that KataGo did consider the position $\color{green} \text{E1 ◆}$. However, since the predicted winrate is low, KataGo stops exploring $\color{green} \text{E1 ◆}$ and keeps exploiting  $\color{red} \text{E11 ◆}$. Besides making the agent outputs a wrong action, we also find examples that make the agent predict a wrong winrate. Fig. 3 4 shows an example of attacking the winrate of Leela with 50 simulations. 
 
 <img src="./images/f34.png" height="400"/>
 
-Both Fig. 3 and Fig. 4 are white's turn. The only difference is the black stone marked with $\color{#9933FF} \text{2}$. However, Leela outputs two totally different winrates on two states. Even amateur humans players can tell that one of the winrates is wrong since  the additional $\color{#9933FF} \text{ black stone}$ shouldn't change the winrate.  More examples are shown in [Adversarial Examples](#adversarial-examples)
+Both Fig. 3 and Fig. 4 are white's turn. The only difference is the black stone marked with $\color{#9933FF} \text{2}$. However, Leela outputs two totally different winrates in two states. Even amateur human players can tell that one of the winrates is wrong since the additional $\color{#9933FF} \text{ black stone}$ shouldn't change the winrate. More examples are shown in [Adversarial Examples](#adversarial-examples)
 
-Our method is inspired by [adversarial attack](https://arxiv.org/pdf/1412.6572.pdf), which creates adversarial examples by minimally perturbing a natural example. For example, in the domain of image classification, researchers make the target model make a wrong prediction by adding some human imperceptible noise. Similar to other adversarial attack, Fig. 2 is created by a adding $\color{#9933FF} \text{two stones (marked as 1 and 2)}$ to a nature state (Fig. 1) of AlphaGo Zero self-play record. Even amateur players know that the $\color{#9933FF} \text{two stones}$ are meaningless since they will not affect the winrate nor the best action of the state in Fig 1. 
+Our method is inspired by [adversarial attack](https://arxiv.org/pdf/1412.6572.pdf), which creates adversarial examples by minimally perturbing a natural example. For example, in the domain of image classification, researchers make the target model make a wrong prediction by adding some human imperceptible noises. Similar to other adversarial attacks, Fig. 2 is created by adding $\color{#9933FF} \text{two stones (marked as 1 and 2)}$ to a natural state (Fig. 1) of AlphaGo Zero self-play record. Even amateur players know that the $\color{#9933FF} \text{two stones}$ are meaningless since they will not affect the winrate nor the best action of the state in Fig 1. 
 However, confused by those two stones, KataGo will switch its answer from $\color{green} \text{E1 ◆}$ to $\color{red} \text{E11 ◆}$. 
-To find the examples show in Fig. 2 and Fig.4, we carefully designed the constraints on perturbed states during the search so that they are semantically similar to the original states and are also easy enough for human players to verify the correct move. Next, we test AZ agents with thousands of these perturbed
-states to they make a trivial mistake. We also design an efficient algorithm to make the testing faster. Normally, our method is 100 times faster than brute force search. The following table shows the results of attacking KataGo with AlphaGo Zero self-play games.
+To find the examples shown in Fig. 2 and Fig.4, we carefully designed the constraints on perturbed states during the search so that they are semantically similar to the original states and are also easy enough for human players to verify the correct move. Next, we test AZ agents with thousands of these perturbed
+states to see if they will make trivial mistakes. We also design an efficient algorithm to make the testing faster. Usually, our method is 100 times faster than brute force search. The following table shows the results of attacking KataGo with AlphaGo Zero self-play games.
 
 ![](./images/table.png)
 
-The first column shows the number of MCTS simulations used by KataGo. The second and the third columns show the success rate of making KataGo outputs a bad action. The third and forth columns shows the success rate of make KataGo outputs a wrong winrate. We can see that as the number of simulations increase, KataGo becomes harder to attack. However, even with 50 simluations, we can still finds policy adversarial examples on 68% of the AlphaGo Zero self-play games. 
+The first column shows the number of MCTS simulations used by KataGo. The second and the third columns show the success rate of making KataGo outputs a bad action. The third and fourth columns show the success rate of making KataGo output a wrong winrate. We can see that as the number of simulations increases, KataGo becomes harder to attack. However, even with 50 simulations, we can still find policy adversarial examples in 68% of the AlphaGo Zero self-play games. 
 
  
 
-Our codes also aims to be a useful and lightweight analyze tool for Go players and developers, and supports the following features:
-- Able to conduct our attack on Go program that supports GTP (https://senseis.xmp.net/?GoTextProtocol). 
+Our codes also aim to be a useful and lightweight analysis tool for Go players and developers and support the following features:
+- Able to connect different agents on different machines through ports.
+- Able to conduct our attack on the Go program that supports GTP (https://senseis.xmp.net/?GoTextProtocol). 
 - Able to save and load the MCTS and NN results of a program.
-- Allowing different agents to compete against each other and store the result in SGF file.
-
-
+- Allowing different agents to compete against each other and store the result as SGF file.
 
 ## Setup
 
