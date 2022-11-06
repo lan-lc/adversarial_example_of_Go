@@ -24,11 +24,44 @@
 但是KataGo只有考慮過一次，而且該次的預測勝率很低 (0.177)。因此KataGo
 沒有繼續考慮該步而是繼續思考關於 $\color{red} \text{E11 ◆}$ 的各種變化。
 
-除了尋找那些會讓AI給出錯誤的最佳步盤面，我們也
+除了尋找那些會讓AI給出錯誤最佳步的盤面，我們也尋找那些會讓AI預測錯誤勝率的盤面。圖三四就是其中一個我們找的例子。
 
 <img src="./images/f34.png" height="400"/>
 
+圖四是由圖三加上一個沒有意義的子 $\color{#9933FF} \text{2}$ 所產生的。
+圖三圖四都是輪到白。然後Leela，另一個超越人類水平的AI，在分別考慮過五十個變化 (MCTS simulations) 後，
+認為圖三白的勝率是0.962而圖四白的勝率是0.157。
+就算是圍棋新手也看得出來額外多加的$\color{#9933FF}\text{黑子}$ 不會影響勝率，
+從而得知Leela對於圖三和圖四的勝率預測一定錯了一個。更多的例子展示在 [Adversarial Examples](#adversarial-examples)。
 
-$\color{red} \text{E11 ◆}$  $\color{green} \text{E1 ◆}$ 
-$\color{#9933FF} \text{2}$
+為了尋找以上這些例子，我們在論文中透過小心的加上不會影嚮勝率也不會改變最佳步的子來產生上萬個不同的盤面。
+接著我們用這些盤面試圖攻擊我們想攻擊的AI。如果該AI給出了一個明顯有錯的答案，那那我們就算找到一個例子。
+為了減少搜尋時間，我們有提出一個新的演算法。該演算法在一般情況下都能至少加速超過一百倍。
+下表展示了我們透過變更AlphaGo Zero自我對役的盤面來攻擊KataGo的結果。
+
+![](./images/table.png)
+
+上表的第一行 (first column) 表示了KataGo可以搜尋的盤面數量。數量越多，KataGo越強。
+第二三行表示了我們對每一局棋譜找到一個盤面使得KataGo下出連業餘棋手都看的錯誤的機率。
+可以看到，單是多加一個子，就在21%的棋譜中找到能讓KataGo在考慮過50個盤面後還是錯了的例子。而當我們加到兩個子，攻擊成功率上升到68%。
+第四五行則表示了讓KataGo給出錯誤勝率的攻擊成功率。可以看到一樣很容易成功。
+
+除了展現我們論文中的方法，我們希望透過開源我們的程式使得更多人能方便分析比較圍棋AI。
+我們的程式有下面幾個特點:
+- 輕便
+- 可透過GTP(https://senseis.xmp.net/?GoTextProtocol)協定同時與多個程式溝通。就算是在不同台電腦也行。
+- 能把這次算過的結果存下來。之後如果又一樣的盤面可以直接讀取。
+- 能把分析的結果存成SGF 檔案。
+
+
+## Adversarial Examples
+以下幾個圖展示了六個我們找到的例子。每一個例子有兩個盤面。左邊是原始正常盤面。右邊是加了一兩個子後的盤面。
+更多例子在 [examples](https://github.com/lan-lc/adversarial_example_of_Go/tree/main/examples)檔案中。
+
+<img src="./images/f56.png" height="400"/>
+<img src="./images/f78.png" height="400"/>
+<img src="./images/f710.png" height="400"/>
+<img src="./images/f1112.png" height="400"/>
+<img src="./images/f1314.png" height="400"/>
+<img src="./images/f1516.png" height="400"/>
 
