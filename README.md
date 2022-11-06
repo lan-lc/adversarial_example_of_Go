@@ -1,6 +1,10 @@
 # Adversarial Example of Go
-------
+-----
+
 ## Overview
+
+[中文簡介](https://github.com/lan-lc/adversarial_example_of_Go/blob/main/chineseREADME.md)
+
 This repository contains a reference implementation of finding adversarial examples for Go Agents. Our paper is accepted by Neurips 2022. 
 
 Can well-trained Go agents make trivial mistakes that even humans can easily tell? In our paper, we attack famous Go agents like [KataGo](https://github.com/lightvector/KataGo), [LeelaZero](https://github.com/leela-zero/leela-zero), [ELF](https://github.com/pytorch/ELF), and [CGI](https://arxiv.org/abs/2003.06212) by systematically finding adversarial states such that the target Go agent will make trivial mistakes. This is inspired by the literature of [adversarial attack](https://arxiv.org/pdf/1412.6572.pdf), where ressearchers found neural networks can be easily fooled by adding some human imperceptible perturbation to the input. 
