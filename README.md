@@ -25,7 +25,7 @@ Due to the complexity of Go, to produce convincing adversarial examples, we addi
 
 In the following two paragrams, we show two of the adversarial examples we found that satisfy the definition above with detailed explanations. More examples are shown in [Adversarial Examples](#adversarial-examples) section.
 
-### Attacking Go Agent's policy
+### Attacking Go agent's policy
 
 ![](./images/f12.png)
 
@@ -39,7 +39,7 @@ However, in Fig.2, the KataGo agent will play black at position $\color{red} \te
 To understand why KataGo makes this mistake,  we list the node information of the MCTS first layer on the right side of Fig. 2.
 The first column shows the node's action. The second column is the number of MCTS simulations of each node. The third column is the predicted winrate of each node. According to the list, we can see that KataGo did consider the position $\color{green} \text{E1 ◆}$ once. However, due to the adversarial perturbation added, the predicted winrate of that move is too low, KataGo stops exploring the node $\color{green} \text{E1 ◆}$ and missed the opportunity of finding the best move.
 
-### Attacking Go Agent's value function (winrate)
+### Attacking Go agent's value function (winrate)
 
 ![](./images/f34.png)
 
@@ -59,7 +59,7 @@ The following table shows the results of attacking KataGo with AlphaGo Zero self
 
 The first column shows the number of MCTS simulations used by KataGo. The second and the third columns show the success rate of making KataGo output a bad action (policy attack). The third and fourth columns show the success rate of making KataGo output an extremely wrong winrate (value attack). We can see that as the number of MCTS simulations increases, KataGo becomes harder to attack. However, even with 50 MCTS simulations (which is already super-human), we can still find policy adversarial examples in 68% of the AlphaGo Zero self-play games. 
 
-## Code for Attacking Go AIs
+## Code for attacking Go AIs
 
 We now provide instructions for finding adversarial examples in Go agents, like those demonstrated above.
 Our codebase also aims to be a useful and lightweight analysis tool for Go players and developers and support the following features:
