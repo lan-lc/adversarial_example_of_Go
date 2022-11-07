@@ -5,7 +5,7 @@
 
 [中文簡介](https://github.com/lan-lc/adversarial_example_of_Go/blob/main/chineseREADME.md)
 
-This repository contains a reference implementation of finding adversarial examples for Go Agents. More empirical results and algorithm details of CROWN-IBP can be found in our paper:  
+This repository contains a reference implementation of finding adversarial examples for Go Agents. More empirical results and algorithm details can be  found in our paper:  
 
 Li-Cheng Lan, Huan Zhang, Ti-Rong Wu, Meng-Yu Tsai, I-Chen Wu, and Cho-Jui Hsieh.
 "Are AlphaZero-like Agents Robust to Adversarial Perturbations?" NeurIPS 2022. 
