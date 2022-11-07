@@ -69,6 +69,7 @@ Our codebase also aims to be a useful and lightweight analysis tool for Go playe
 - Able to save and load the MCTS and NN results of a program.
 - Able to let two agents play against each other.
 - Able to store the analysis results in an SGF file.
+- Able to attack other discrete games. In our paper, we have successfully attack the game of NoGo.
 
 ### Setup
 
