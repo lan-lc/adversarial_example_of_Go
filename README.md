@@ -5,35 +5,46 @@
 
 [中文簡介](https://github.com/lan-lc/adversarial_example_of_Go/blob/main/chineseREADME.md)
 
-This repository contains a reference implementation of finding adversarial examples for Go Agents. Our paper 
-(Li-Cheng Lan, Huan Zhang, Ti-Rong Wu, Meng-Yu Tsai, I-Chen Wu, and Cho-Jui Hsieh.
-"Are AlphaZero-like Agents Robust to
-Adversarial Perturbations?") is accepted by Neurips 2022. 
+This repository contains a reference implementation of our paper:
 
-Can well-trained Go agents make trivial mistakes that even humans can easily tell? In our paper, we attack famous Go agents like [KataGo](https://github.com/lightvector/KataGo), [LeelaZero](https://github.com/leela-zero/leela-zero), [ELF](https://github.com/pytorch/ELF), and [CGI](https://arxiv.org/abs/2003.06212) by systematically finding adversarial states such that the target Go agent will make trivial mistakes. This is inspired by the literature of [adversarial attack](https://arxiv.org/pdf/1412.6572.pdf), where researchers found neural networks can be easily fooled by adding some human imperceptible perturbation to the input. 
+**"Are AlphaZero-like Agents Robust to adversarial Perturbations?"**, \
+Li-Cheng Lan, Huan Zhang, Ti-Rong Wu, Meng-Yu Tsai, I-Chen Wu, and Cho-Jui Hsieh. 
+NeurIPS 2022.
 
-Given a natural state from a game record where the target Go agent can find a winning move, we generate an adversarial state by adding one or two meaningless stones such that the Go agent will play an undoubtedly inferior action and eventually lose the game. The errors made by the target models are obvious, even for Go beginners. Fig.2 shows one of the examples we found. 
+In our paper, we attack famous AlphaZero based Go agents like [KataGo](https://github.com/lightvector/KataGo), [LeelaZero](https://github.com/leela-zero/leela-zero), [ELF](https://github.com/pytorch/ELF), and [CGI](https://arxiv.org/abs/2003.06212) to see **if well-trained Go agents will make trivial mistakes that even humans can easily tell?** We answer this question based on the idea of [adversarial attack](https://arxiv.org/pdf/1412.6572.pdf), where researchers found neural networks can be easily fooled by “adversarial
+examples”, which are created by adding small and semantically invariant perturbations to a natural example. To find adversarial examples of **search** agents in **discrete** game like Go, we first extend the definition of adversarial example of an target agent as:
 
-<!-- <img src="./images/f12.png" height="410"/> -->
+1. The adversarial example $s'$ should be at most 2 stones from a natural state $s$.
+2. The adversarial example $s'$ should be semantically equivalent to the state $s$.
+    - Have the same turn color, winrate, and best action (move).
+3. The target agent is correct at the state $s$ and extremely wrong on the adversarial example $s'$.
+4. Even amateur human players can verify that $s$ and $s'$ are semantically equivalent and the target agent makes a mistake.
+
+In the following two paragrams, we show two adversarial examples we found that satisfy the definition above.
+
 ![](./images/f12.png)
 
-The state in Fig. 2 is created by adding $\color{#9933FF} \text{two stones}$ (marked as $\color{#9933FF} \text{1}$ and $\color{#9933FF} \text{2}$) to a natural state (Fig. 1) of AlphaGo Zero self-play record. 
-Even amateur players know that the $\color{#9933FF} \text{two stones}$ are meaningless since they will not affect the winrate nor the best action of the state in Fig 1. 
+**A policy Adversarial example.** Fig. 2 shows an adversarial example that will make KataGo with 50 simulation output a wrong move. 
+First, the state in Fig. 2 is created by adding $\color{#9933FF} \text{two stones}$ (marked as $\color{#9933FF} \text{1}$ and $\color{#9933FF} \text{2}$) to a natural state (Fig. 1) of AlphaGo Zero self-play record. 
+Even amateur players can tell that Fig.1 and Fig.2 are semantically equivalent since it is obvious that both of the additional $\color{#9933FF} \text{stones}$ are meaningless and will not affect the winrate nor the best action of the state in Fig 1. 
 The best action of both states is playing black at position $\color{green} \text{E1 ◆}$ since by playing $\color{green} \text{E1 ◆}$ black can kill all the white stones that are marked with blue triangles.
 However, in Fig.2, the KataGo agent will want to play black at position $\color{red} \text{E11 ◆}$ instead of position $\color{green} \text{E1 ◆}$ even after executing 50 MCTS simulations. Although playing black at $\color{red} \text{E11 ◆}$ can save the four black stones marked with squares,  even amateur human players can tell that killing the white stones marked with triangles is way more important.
-To understand how KataGo makes this mistake,  we list the node information of the MCTS first layer at the right of Fig. 2.
-The first column is the node's action. The second column is the number of MCTS simulations of each node. The third column is the predicted winrate of each node. According to the list, we can see that KataGo did consider the position $\color{green} \text{E1 ◆}$ once. However, since the predicted winrate of that simulation is too low, KataGo stops exploring $\color{green} \text{E1 ◆}$. 
 
-Besides making the agent outputs a wrong action, we also find examples that make the agent predict a wrong winrate. Fig. 3 4 shows an example of attacking the winrate of Leela with 50 simulations. 
 
-<!-- <img src="./images/f34.png" height="400"/> -->
+To understand why KataGo makes this mistake,  we list the node information of the MCTS first layer at the right side of Fig. 2.
+The first column shows the node's action. The second column is the number of MCTS simulations of each node. The third column is the predicted winrate of each node. According to the list, we can see that KataGo did consider the position $\color{green} \text{E1 ◆}$ once. However, since the predicted winrate of that simulation is too low, KataGo stops exploring the node $\color{green} \text{E1 ◆}$. 
+
 ![](./images/f34.png)
 
-The state in Fig. 4 is created by adding a $\color{#9933FF} \text{black stone (2)}$ to the natural state in Fig. 3. Although the additional  $\color{#9933FF} \text{black stone (2)}$ is obviously meaningless, Leela outputs two totally different winrates in two states.
-Even amateur human players can tell that one of the winrates is wrong since the additional $\color{#9933FF} \text{black stone}$ shouldn't change the winrate. (See more examples in [Adversarial Examples](#adversarial-examples) )
+**A value Adversarial example.**
+Fig. 4 shows an adversarial example that will make KataGo with 50 simulation output a wrong winrate. 
+Fig. 4 is created by adding a $\color{#9933FF} \text{black stone (1)}$ to the natural state in Fig. 3. The turn player of both Fig.3 and Fig.4 are white. Although the additional  $\color{#9933FF} \text{black stone (1)}$ is obviously meaningless, Leela outputs two totally different winrates in two states.
+Even amateur human players can tell that one of the winrates is wrong since the additional $\color{#9933FF} \text{black stone}$ shouldn't change the winrate under chinese Go rules. 
+(See more examples in [Adversarial Examples](#adversarial-examples) )
 
 
-To find the adversarial examples shown in Fig. 2 and Fig.4, we carefully designed the constraints on perturbed states during the search so that they are semantically similar to the original states and are also easy enough for human players to verify the correct move. Next, we test AZ agents with thousands of these perturbed
+To find the adversarial examples that satisfy our definition like Fig. 2 and Fig.4,
+we carefully designed the constraints on perturbed states during the search so that they are semantically similar to the original states and are also easy enough for human players to verify the correct move. Next, we test AZ agents with thousands of these perturbed
 states to see if they will make trivial mistakes. We also design an efficient algorithm to make the testing faster. Usually, our method is 100 times faster than brute force search. The following table shows the results of attacking KataGo with AlphaGo Zero self-play games.
 
 ![](./images/table.png)
