@@ -23,7 +23,7 @@ In image and NLP domains, adversarial examples are visually or semantically simi
 
 Due to the complexity of Go, to produce convincing adversarial examples, we additional require that even amateur human players can verify that the natural state and the adversarial state are semantically equivalent (point 2) and the target agent makes a serious mistake (point 3).
 
-In the following two paragrams, we show two adversarial examples we found that satisfy the definition above with detailed explanations. More examples are shown in [Adversarial Examples](#adversarial-examples) section.
+In the following two paragrams, we show two of the adversarial examples we found that satisfy the definition above with detailed explanations. More examples are shown in [Adversarial Examples](#adversarial-examples) section.
 
 ### Attacking Go Agent's policy
 
