@@ -29,10 +29,10 @@
 <img src="./images/f34.png" height="400"/>
 
 圖四是由圖三加上一個沒有意義的子 $\color{#9933FF} \text{2}$ 所產生的。
-圖三圖四都是輪到白。然後Leela，另一個超越人類水平的AI，在分別考慮過五十個變化 (MCTS simulations) 後，
-認為圖三白的勝率是0.962而圖四白的勝率是0.157。
-就算是圍棋新手也看得出來額外多加的 $\color{#9933FF}\text{黑子}$ 不會影響勝率，
-從而得知Leela對於圖三和圖四的勝率預測一定錯了一個。更多的例子展示在 [Adversarial Examples](#adversarial-examples)。
+圖三圖四都是輪到白棋下。然而KataGo在分別考慮過五十個變化 (MCTS simulations) 後，
+認為圖三白的勝率是0.799而圖四白的勝率是0.296。
+就算是圍棋新手也看得出來額外多加的 $\color{#9933FF}\text{黑子}$ 不應該影響勝率，
+從而得知KataGo對於圖三和圖四的勝率預測一定錯了一個。更多的例子展示在 [Adversarial Examples](#adversarial-examples)。
 
 為了尋找以上這些例子，我們在論文中透過小心的加上不會影嚮勝率也不會改變最佳步的子來產生上萬個不同的盤面。
 接著我們用這些盤面試圖攻擊我們想攻擊的AI。如果該AI給出了一個明顯有錯的答案，那那我們就算找到一個例子。
@@ -51,7 +51,7 @@
 - 輕便
 - 可透過GTP(https://senseis.xmp.net/?GoTextProtocol)協定同時與多個程式溝通。就算是在不同台電腦也行。
 - 能把這次算過的結果存下來。之後如果又一樣的盤面可以直接讀取。
-- 能把分析的結果存成SGF 檔案。
+- 能把分析的結果存成SGF檔案。
 
 
 ## Adversarial Examples
