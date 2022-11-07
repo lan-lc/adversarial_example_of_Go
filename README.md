@@ -38,9 +38,9 @@ The first column shows the node's action. The second column is the number of MCT
 
 **A value Adversarial example.**
 Fig. 4 shows an adversarial example that will make KataGo with 50 simulation output a wrong winrate. 
-Fig. 4 is created by adding a $\color{#9933FF} \text{black stone (1)}$ to the natural state in Fig. 3. The turn player of both Fig.3 and Fig.4 are white. Although the additional  $\color{#9933FF} \text{black stone (1)}$ is obviously meaningless, Leela outputs two totally different winrates in two states.
-Even amateur human players can tell that one of the winrates is wrong since the additional $\color{#9933FF} \text{black stone}$ shouldn't change the winrate under chinese Go rules. 
-(See more examples in [Adversarial Examples](#adversarial-examples) )
+Fig. 4 is created by adding a $\color{#9933FF} \text{white stone (1)}$ to the natural state in Fig. 3. The turn player of both Fig.3 and Fig.4 are white. Although the additional  $\color{#9933FF} \text{white stone (1)}$ is obviously meaningless, KataGo outputs two totally different winrates in two states.
+Even amateur human players can tell that one of the winrates is wrong since the additional $\color{#9933FF} \text{white stone (1)}$ shouldn't change the winrate under chinese Go rules. 
+More examples are shown in [Adversarial Examples](#adversarial-examples).
 
 
 To find the adversarial examples that satisfy our definition like Fig. 2 and Fig.4,
