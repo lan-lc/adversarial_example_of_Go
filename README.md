@@ -3,7 +3,7 @@
 
 ## Overview
 
-[中文簡介](https://github.com/lan-lc/adversarial_example_of_Go/blob/main/chineseREADME.md)
+[中文版](https://github.com/lan-lc/adversarial_example_of_Go/blob/main/chineseREADME.md)
 
 This repository contains a reference implementation of our paper:
 
