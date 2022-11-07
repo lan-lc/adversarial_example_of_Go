@@ -7,7 +7,7 @@
 
 This repository contains a reference implementation of our paper:
 
-**"Are AlphaZero-like Agents Robust to adversarial Perturbations?" **, \
+**"Are AlphaZero-like Agents Robust to adversarial Perturbations?"**, \
 Li-Cheng Lan, Huan Zhang, Ti-Rong Wu, Meng-Yu Tsai, I-Chen Wu, and Cho-Jui Hsieh. 
 NeurIPS 2022.
 
