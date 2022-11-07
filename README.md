@@ -18,11 +18,11 @@ Can well-trained Go agents make trivial mistakes that even humans can easily tel
 The state in Fig. 2 is created by adding $\color{#9933FF} \text{two stones}$ (marked as $\color{#9933FF} \text{1}$ and $\color{#9933FF} \text{2}$) to a natural state (Fig. 1) of AlphaGo Zero self-play record. 
 Even amateur players know that the $\color{#9933FF} \text{two stones}$ are meaningless since they will not affect the winrate nor the best action of the state in Fig 1. 
 The best action of both states is playing black at position $\color{green} \text{E1 ◆}$ since by playing $\color{green} \text{E1 ◆}$ black can kill all the white stones that are marked with blue triangles.
-However, in Fig.2, the KataGo agent will want to play black at position $\color{red} \text{E11 ◆}$ instead of position $\color{green} \text{E1 ◆}$ even after executing 50 MCTS simulations. Although playing black at $\color{red} \text{E11 ◆}$ can save the four black stones marked with squares,  even amateur human players can tell that killing the white stones marked with triangles is way more important.
+However, in Fig.2, the KataGo agent will play black at position $\color{red} \text{E11 ◆}$ instead of position $\color{green} \text{E1 ◆}$ even after executing 50 MCTS simulations. Although playing black at $\color{red} \text{E11 ◆}$ can save the four black stones marked with squares,  even amateur human players can tell that killing the white stones marked with triangles is way more important.
 To understand how KataGo makes this mistake,  we list the node information of the MCTS first layer at the right of Fig. 2.
 The first column is the node's action. The second column is the number of MCTS simulations of each node. The third column is the predicted winrate of each node. According to the list, we can see that KataGo did consider the position $\color{green} \text{E1 ◆}$ once. However, since the predicted winrate of that simulation is too low, KataGo stops exploring $\color{green} \text{E1 ◆}$. 
 
-Besides making the agent outputs a wrong action, we also find examples that make the agent predict a wrong winrate. Fig. 3 4 shows an example of attacking the winrate of Leela with 50 simulations. 
+Besides making the agent outputs a wrong action, we also find examples that make the agent predict a wrong winrate. Fig. 4 is an example of attacking the winrate of Leela with 50 simulations. 
 
 <!-- <img src="./images/f34.png" height="400"/> -->
 ![](./images/f34.png)
