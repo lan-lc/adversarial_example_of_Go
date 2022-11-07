@@ -26,7 +26,8 @@ The first column is the node's action. The second column is the number of MCTS s
 
 Besides making the agent outputs a wrong action, we also find examples that make the agent predict a wrong winrate. Fig. 3 4 shows an example of attacking the winrate of Leela with 50 simulations. 
 
-<img src="./images/f34.png" height="400"/>
+<!-- <img src="./images/f34.png" height="400"/> -->
+![](./images/f34.png)
 
 The state in Fig. 4 is created by adding a $\color{#9933FF} \text{black stone (2)}$ to the natural state in Fig. 3. Although the additional  $\color{#9933FF} \text{black stone (2)}$ is obviously meaningless, Leela outputs two totally different winrates in two states.
 Even amateur human players can tell that one of the winrates is wrong since the additional $\color{#9933FF} \text{black stone}$ shouldn't change the winrate. (See more examples in [Adversarial Examples](#adversarial-examples) )
@@ -99,10 +100,17 @@ gogui-server -port 9999 "Release/CGI -conf_file cgi_example.cfg"
 ## Adversarial Examples
 The following pictures show some of the adversarial examples we found. For each pair of pictures, the left is the natural state, and the right is the perturbed state. More examples are shown in the [examples](https://github.com/lan-lc/adversarial_example_of_Go/tree/main/examples) folder.
 
+![](./images/f56.png)
+![](./images/f78.png)
+![](./images/f910.png)
+![](./images/f1112.png)
+![](./images/f1314.png)
+![](./images/f1516.png)
 
+<!-- 
 <img src="./images/f56.png" height="400"/>
 <img src="./images/f78.png" height="400"/>
 <img src="./images/f710.png" height="400"/>
 <img src="./images/f1112.png" height="400"/>
 <img src="./images/f1314.png" height="400"/>
-<img src="./images/f1516.png" height="400"/>
+<img src="./images/f1516.png" height="400"/> -->
