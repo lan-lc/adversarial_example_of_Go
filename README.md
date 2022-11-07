@@ -7,43 +7,43 @@
 
 This repository contains a reference implementation of our paper:
 
-**"Are AlphaZero-like Agents Robust to adversarial Perturbations?"**, \
+**"Are AlphaZero-like Agents Robust to adversarial Perturbations?" **, \
 Li-Cheng Lan, Huan Zhang, Ti-Rong Wu, Meng-Yu Tsai, I-Chen Wu, and Cho-Jui Hsieh. 
 NeurIPS 2022.
 
-In our paper, we attack famous AlphaZero based Go agents like [KataGo](https://github.com/lightvector/KataGo), [LeelaZero](https://github.com/leela-zero/leela-zero), [ELF](https://github.com/pytorch/ELF), and [CGI](https://arxiv.org/abs/2003.06212) to see **if well-trained Go agents will make trivial mistakes that even humans can easily tell?** We answer this question based on the idea of [adversarial attack](https://arxiv.org/pdf/1412.6572.pdf), where researchers found neural networks can be easily fooled by “adversarial
-examples”, which are created by adding small and semantically invariant perturbations to a natural example. To find adversarial examples of **search** agents in **discrete** game like Go, we first extend the definition of adversarial example of an target agent as:
+In our paper, we attack famous AlphaZero-based Go agents like [KataGo](https://github.com/lightvector/KataGo), [LeelaZero](https://github.com/leela-zero/leela-zero), [ELF](https://github.com/pytorch/ELF), and [CGI](https://arxiv.org/abs/2003.06212) to see **if well-trained Go agents will make trivial mistakes that even humans can easily tell?** We answer this question based on the idea of [adversarial attack](https://arxiv.org/pdf/1412.6572.pdf), where researchers found neural networks can be easily fooled by "adversarial
+examples", which are created by adding small and semantically invariant perturbations to a natural example. To find adversarial examples of **search** agents in **discrete** games like Go, we first extend the definition of an adversarial example of a target agent as:
 
-1. The adversarial example $s'$ should be at most 2 stones from a natural state $s$.
+1. The adversarial example $s'$ should be at most two stones from a natural state $s$.
 2. The adversarial example $s'$ should be semantically equivalent to the state $s$.
     - Have the same turn color, winrate, and best action (move).
 3. The target agent is correct at the state $s$ and extremely wrong on the adversarial example $s'$.
-4. Even amateur human players can verify that $s$ and $s'$ are semantically equivalent and the target agent makes a mistake.
+4. Even amateur human players can verify that $s$ and $s'$ are semantically equivalent, and the target agent makes a mistake.
 
 In the following two paragrams, we show two adversarial examples we found that satisfy the definition above.
 
 ![](./images/f12.png)
 
-**A policy Adversarial example.** Fig. 2 shows an adversarial example that will make KataGo with 50 simulation output a wrong move. 
+**A policy adversarial example.** Fig. 2 shows an adversarial example that will make KataGo with 50 simulation output a wrong move. 
 First, the state in Fig. 2 is created by adding $\color{#9933FF} \text{two stones}$ (marked as $\color{#9933FF} \text{1}$ and $\color{#9933FF} \text{2}$) to a natural state (Fig. 1) of AlphaGo Zero self-play record. 
 Even amateur players can tell that Fig.1 and Fig.2 are semantically equivalent since it is obvious that both of the additional $\color{#9933FF} \text{stones}$ are meaningless and will not affect the winrate nor the best action of the state in Fig 1. 
 The best action of both states is playing black at position $\color{green} \text{E1 ◆}$ since by playing $\color{green} \text{E1 ◆}$ black can kill all the white stones that are marked with blue triangles.
 However, in Fig.2, the KataGo agent will want to play black at position $\color{red} \text{E11 ◆}$ instead of position $\color{green} \text{E1 ◆}$ even after executing 50 MCTS simulations. Although playing black at $\color{red} \text{E11 ◆}$ can save the four black stones marked with squares,  even amateur human players can tell that killing the white stones marked with triangles is way more important.
 
 
-To understand why KataGo makes this mistake,  we list the node information of the MCTS first layer at the right side of Fig. 2.
+To understand why KataGo makes this mistake,  we list the node information of the MCTS first layer on the right side of Fig. 2.
 The first column shows the node's action. The second column is the number of MCTS simulations of each node. The third column is the predicted winrate of each node. According to the list, we can see that KataGo did consider the position $\color{green} \text{E1 ◆}$ once. However, since the predicted winrate of that simulation is too low, KataGo stops exploring the node $\color{green} \text{E1 ◆}$. 
 
 ![](./images/f34.png)
 
-**A value Adversarial example.**
+**A value adversarial example.**
 Fig. 4 shows an adversarial example that will make KataGo with 50 simulation output a wrong winrate. 
 Fig. 4 is created by adding a $\color{#9933FF} \text{white stone (1)}$ to the natural state in Fig. 3. The turn player of both Fig.3 and Fig.4 are white. Although the additional  $\color{#9933FF} \text{white stone (1)}$ is obviously meaningless, KataGo outputs two totally different winrates in two states.
-Even amateur human players can tell that one of the winrates is wrong since the additional $\color{#9933FF} \text{white stone (1)}$ shouldn't change the winrate under chinese Go rules. 
+Even amateur human players can tell that one of the winrates is wrong since the additional $\color{#9933FF} \text{white stone (1)}$ shouldn't change the winrate under Chinese Go rules. 
 More examples are shown in [Adversarial Examples](#adversarial-examples).
 
 
-To find the adversarial examples that satisfy our definition like Fig. 2 and Fig.4,
+To find the adversarial examples that satisfy our definition, like Fig. 2 and Fig.4,
 we carefully designed the constraints on perturbed states during the search so that they are semantically similar to the original states and are also easy enough for human players to verify the correct move. Next, we test AZ agents with thousands of these perturbed
 states to see if they will make trivial mistakes. We also design an efficient algorithm to make the testing faster. Usually, our method is 100 times faster than brute force search. The following table shows the results of attacking KataGo with AlphaGo Zero self-play games.
 
