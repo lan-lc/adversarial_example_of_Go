@@ -4,14 +4,14 @@
 This repository contains demonstrations of adversarial examples in Go AIs and code for conducting our proposed adversarial attack. Our work has been published at NeurIPS 2022:
 
 **"Are AlphaZero-like Agents Robust to adversarial Perturbations?"**  
-NeurIPS 2022  
+NeurIPS 2022 ([link to paper](https://arxiv.org/pdf/2211.03769.pdf))  
 Li-Cheng Lan, Huan Zhang, Ti-Rong Wu, Meng-Yu Tsai, I-Chen Wu, and Cho-Jui Hsieh. 
 
 A Chinese version of this documentation can be found at [中文版](https://github.com/lan-lc/adversarial_example_of_Go/blob/main/chineseREADME.md).
 
 ## A Quest for Adversarial Attacks of Go AIs
 
-In our paper, we attack famous AlphaZero-based Go agents like [KataGo](https://github.com/lightvector/KataGo), [LeelaZero](https://github.com/leela-zero/leela-zero), [ELF](https://github.com/pytorch/ELF), and [CGI](https://arxiv.org/abs/2003.06212) to see **if well-trained Go agents will make trivial mistakes that even amateur players can easily tell?** Although researchers often find that AIs can be fooled by crafting malicious "adversarial examples" that are very similar to natural inputs, can we find such adversarial examples for super-human Go AIs?
+In [our paper](https://arxiv.org/pdf/2211.03769.pdf), we attack famous AlphaZero-based Go agents like [KataGo](https://github.com/lightvector/KataGo), [LeelaZero](https://github.com/leela-zero/leela-zero), [ELF](https://github.com/pytorch/ELF), and [CGI](https://arxiv.org/abs/2003.06212) to see **if well-trained Go agents will make trivial mistakes that even amateur players can easily tell?** Although researchers often find that AIs can be fooled by crafting malicious "adversarial examples" that are very similar to natural inputs, can we find such adversarial examples for super-human Go AIs?
 
 ### Definition of adversarial example in Go
 
@@ -49,7 +49,7 @@ Fig. 4 shows an adversarial example that will make KataGo with 50 simulation out
 
 To find the adversarial examples that satisfy our definition, like Fig. 2 and Fig.4,
 we carefully designed the constraints on perturbed states during a search procedure so that they are semantically similar to the original states and are also easy enough for human players to verify the correct move. Next, we test AZ agents with thousands of these perturbed
-states to see if they will make trivial mistakes. We also design an efficient algorithm to make the testing faster. Usually, our method is 100 times faster than brute force search. For more details, please read [our paper](https://arxiv.org/).
+states to see if they will make trivial mistakes. We also design an efficient algorithm to make the testing faster. Usually, our method is 100 times faster than brute force search. For more details, please read [our paper](https://arxiv.org/pdf/2211.03769.pdf).
 
 ### How often can we find adversarial examples for a super-human AI?
 
@@ -69,7 +69,7 @@ Our codebase also aims to be a useful and lightweight analysis tool for Go playe
 - Able to save and load the MCTS and NN results of a program.
 - Able to let two agents play against each other.
 - Able to store the analysis results in an SGF file.
-- Able to attack other discrete games. In our paper, we have successfully attack the game of NoGo.
+- Able to attack other discrete games. In [our paper](https://arxiv.org/pdf/2211.03769.pdf), we have successfully attack the game of NoGo.
 
 ### Setup
 
