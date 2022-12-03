@@ -78,6 +78,7 @@ Our codebase also aims to be a useful and lightweight analysis tool for Go playe
 git clone git@github.com:lan-lc/adversarial_example_of_Go.git
 cd adversarial_example_of_Go
 sudo docker run --gpus all --network="host" --ipc=host -it -v=$PWD:/workspace kds285/go-attack
+cd source
 mkdir build
 cd build
 cmake ..
